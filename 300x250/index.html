@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Wendy+One" rel="stylesheet">
+    <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+    <script type="text/javascript" src="http://ds.servingsys-dev.com/BurstingScript/EBLoader.js"></script>
+    <style>
+      html, body{
+        font-family: 'Wendy One', sans-serif;
+      }
+      .block{
+        background: url(images/1.jpg) no-repeat center;
+        width: 300px;
+        height: 250px;
+        position: relative;
+        overflow: hidden;
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        -ms-transition: all 0.3s;
+        -o-transition: all 0.3s;
+        transition: all 0.3s;
+      }
+      .block.block1{
+        background-image: url(images/11.jpg) !important;
+      }
+      #cif{
+        background: url(images/2.png) no-repeat center;
+        width: 77px;
+        height: 98px;
+        position: absolute;
+        bottom: 0px;
+        right: 30px;
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        -ms-transition: all 0.3s;
+        -o-transition: all 0.3s;
+        transition: all 0.3s;
+      }
+      #cif.move1{
+        -ms-transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+        bottom: -30px;
+        right: 27px;
+      }
+      #cif.move2{
+        -ms-transform: rotate(27deg);
+        -webkit-transform: rotate(27deg);
+        transform: rotate(27deg);
+        bottom: 5px;
+        right: -8px;
+      }
+      .rain{
+        background: url(images/5.png) no-repeat center;
+        width: 150px;
+        height: 73px;
+        position: absolute;
+        top: 162px;
+        right: 81px;
+        -ms-transform: rotate(145deg);
+        -webkit-transform: rotate(145deg);
+        transform: rotate(145deg);
+        display: none;
+      }
+      .rain1{
+        background: url(images/5.png) no-repeat center;
+        width: 150px;
+        height: 73px;
+        position: absolute;
+        top: 105px;
+        right: 40px;
+        -ms-transform: rotate(-140deg);
+        -webkit-transform: rotate(-140deg);
+        transform: rotate(-140deg);
+        display: none;
+      }
+      #time{
+        background: url(images/3.png) no-repeat center;
+        width: 69px;
+        height: 68px;
+        position: absolute;
+        bottom: 10px;
+        right: 72px;
+        opacity: 0;
+        -moz-animation: 0.5s infinite linear;
+        -webkit-animation: spinoffPulse 0.5s infinite linear;
+        /*-webkit-animation-iteration-count: 3; !* Safari 4.0 - 8.0 *!*/
+        /*animation-iteration-count: 3;*/
+      }
+      #time.animat{
+        -moz-transform: scale(1.2);
+        -webkit-transform: scale(1.2);
+        -o-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);
+        -webkit-transition: transform .5s ease-in-out;
+        -moz-transition: transform .5s ease-in-out;
+        transition: transform .5s ease-in-out;
+      }
+      #number{
+        width: 69px;
+        height: 68px;
+        position: absolute;
+        bottom: 10px;
+        right: 72px;
+        opacity: 0;
+        text-align: center;
+      }
+      #number .btn{
+        background: #00401f;
+        padding: 10px 5px;
+        color: #fff;
+        border: 4px solid #fff;
+        font-size: 16px;
+        font-weight: bold;
+        display: inline-block;
+        position: relative;
+        min-width: 100px;
+        z-index: 100;
+        right: 35px;
+        bottom: 0px;
+        border-radius: 15px;
+        -moz-transform: scale(1.2);
+        -webkit-transform: scale(1.2);
+        -o-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);
+        -webkit-transition: transform .6s linear;
+        -moz-transition: transform .6s linear;
+        transition: transform .6s linear;
+        display: none;
+      }
+      #number p{
+        color: #00401f;
+        font-size: 16px;
+        font-weight: bold;
+        position: relative;
+        top: 27px;
+        /*left: 20px;*/
+        margin: 0;
+        text-shadow: #fff 0 0 10px, #fff 0 0 10px, #fff 0 0 10px;
+      }
+      #number span{
+        color: #00401f;
+        font-size: 16px;
+        font-weight: bold;
+      }
+      #khan{
+        background: url(images/4.png) no-repeat center;
+        width: 134px;
+        height: 109px;
+        position: absolute;
+        top: 0px;
+        right: -200px;
+        -webkit-transition: all 1.4s;
+        -moz-transition: all 1.4s;
+        -ms-transition: all 1.4s;
+        -o-transition: all 1.4s;
+        transition: all 1.4s;
+      }
+      #khan.move{
+        top: 320px;
+        right: 700px;
+      }
+      .logo{
+        background: url(images/6.png) no-repeat center;
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        display: none;
+      }
+      .title{
+        background: url(images/7.png) no-repeat center;
+        width: 177px;
+        height: 51px;
+        position: absolute;
+        top: 10px;
+        right: -177px;
+      }
+      @-moz-keyframes spinoffPulse {
+        0% { -moz-transform:rotate(0deg); }
+        100% { -moz-transform:rotate(360deg);  }
+      }
+      @-webkit-keyframes spinoffPulse {
+        0% { -webkit-transform:rotate(0deg); }
+        100% { -webkit-transform:rotate(360deg); }
+      }
+    </style>
+    <script>
+      $(document).ready(function(){
+        AOS.init({
+          duration: 600,
+        });
+        setTimeout(function(){
+          $('.rain').fadeIn('fast');
+          $('.rain').fadeOut('fast');
+        }, 100);
+        setTimeout(function(){
+          $('#cif').addClass('move1');
+          $('.rain1').fadeIn('fast');
+          $('.rain1').fadeOut('fast');
+        }, 800);
+        setTimeout(function(){
+          $('#cif').removeClass('move1').addClass('move2');
+        }, 1500);
+        setTimeout(function(){
+          $('#time').animate({opacity: 1}, 300);
+          $('#number').animate({opacity: 1}, 300);
+        }, 1700);
+        setTimeout(function(){
+          $('#number span').each(function () {
+            var $this = $(this);
+            jQuery({ Counter: 0 }).animate({ Counter: $this.text() }, {
+              duration: 1000,
+              easing: 'swing',
+              step: function () {
+                $this.text(Math.ceil(this.Counter));
+              }
+            });
+          });
+        },1800);
+        setTimeout(function(){
+          $('#time').css("-webkit-animation", "none");
+          $('#time').css("-moz-animation", "none");
+          $('#time').css("-ms-animation", "none");
+          $('#time').css("animation", "none");
+        },2800);
+        setTimeout(function(){
+          $('#time').addClass('animat').fadeIn('slow');
+        },2900);
+        setTimeout(function(){
+          $('#khan').addClass('move');
+          $('#time').removeClass('animat');
+        },3500);
+        setTimeout(function(){
+          $('.block').addClass('block1');
+          $('#number p').css('opacity','0');
+          $('#time').css('opacity','0');
+          $('#number .btn').fadeIn('slow');
+        },4000);
+        setTimeout(function(){
+          $('#number .btn').css("-moz-transform", "scale(1)");
+          $('#number .btn').css("-webkit-transform", "scale(1)");
+          $('#number .btn').css("-o-transform", "scale(1)");
+          $('#number .btn').css("-ms-transform", "scale(1)");
+          $('#number .btn').css("-webkit-transform", "scale(1)");
+          $('#number .btn').css("transform", "scale(1)");
+          $('.logo').fadeIn('slow');
+        },4400);
+        setTimeout(function(){
+          $('.title').animate({ right:'40px' });
+        },4800);
+      });
+    </script>
+  </head>
+  <body>
+    <div class="block" onclick="onBannerClick()">
+      <div id="cif" data-aos="fade-down-left"></div>
+      <div class="rain"></div>
+      <div class="rain1"></div>
+      <div id="time"></div>
+      <div id="number">
+        <p>0:<span>10</span></p>
+        <div class="btn">MUA NGAY</div>
+      </div>
+      <div id="khan"></div>
+      <div class="logo"></div>
+      <div class="title"></div>
+    </div>
+    <script type="text/javascript">
+      function onInit() {
+      // show the creative and start the flow
+      }
+      function onBannerClick() {
+        EB.clickthrough();
+      }
+      if (!EB.isInitialized()) {
+        EB.addEventListener(EBG.EventName.EB_INITIALIZED, onInit);
+      }
+      else {
+       onInit();
+      }
+    </script>
+  </body>
+</html>
